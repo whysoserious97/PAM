@@ -2,5 +2,7 @@
     <string name="app_name">PAM_LAB1</string>
     <string name="nextpage">+</string>
     <string name="random_heading">Random number between 0 and %d</string>
-    <string name="send">Send</string>
+    <string name="send">Unfollow</string>
+    <string name="unfollow">Unfollow All Them</string>
+    <string name="like">Auto-Like</string>
 </resources>

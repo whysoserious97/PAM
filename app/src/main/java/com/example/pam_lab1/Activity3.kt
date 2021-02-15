@@ -7,21 +7,21 @@ import android.view.View
 import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
-import kotlinx.android.synthetic.main.activity_not_following_back.*
+import kotlinx.android.synthetic.main.activity_auto_like.*
 //import kotlinx.android.synthetic.main.activity_main.*
 import java.util.*
 
 
-class Activity2 : AppCompatActivity() {
+class Activity3 : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_not_following_back)
+        setContentView(R.layout.activity_auto_like)
 //        showInput()
         val exampleList = generateDummyList(30)
-        recycler_view.adapter = ExampleAdapter(exampleList)
-        recycler_view.layoutManager = LinearLayoutManager(this)
-        recycler_view.setHasFixedSize(true)
+        recycler_view_toLike.adapter = ExampleAdapter(exampleList)
+        recycler_view_toLike.layoutManager = LinearLayoutManager(this)
+        recycler_view_toLike.setHasFixedSize(true)
     }
     private fun generateDummyList(size: Int): List<ExampleItem> {
         val list = ArrayList<ExampleItem>()
@@ -32,14 +32,14 @@ class Activity2 : AppCompatActivity() {
 //                else -> R.drawable.ic_sun
 //            }
             val drawable = R.drawable.ic_user
-            val item = ExampleItem(drawable, "User $i", "Name_Surname")
+            val item = ExampleItem(drawable, "User $i to like", "Name_Surname")
             list += item
         }
         return list
     }
 
-    fun unfollow(view: View) {
-        Toast.makeText(getApplicationContext(),"unfollowed", Toast.LENGTH_SHORT).show();
+    fun likeAll(view: View) {
+        Toast.makeText(getApplicationContext(),"likeAll", Toast.LENGTH_SHORT).show();
     }
 //    fun showInput(){
 //        val received = intent.getStringExtra("input").toString()

@@ -30,3 +30,8 @@ In laboratory work No.1 I was performing basic setup of mobile application on An
         startActivity(intent)
     }
 
+LAB 2 : Instagram Utility
+To implement in furthure labs:
+1) Show the persons who do not follow you
+2) Auto-Like photoes of the persons in the list
+3) For influencers to like all photoes of a random person from the persons who follows him
