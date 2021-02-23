@@ -52,13 +52,13 @@ In "auto-like" I have used GridLayoutManager to make it with 2 columns
 
 
 # Login Page
-    ![Login](LoginPage.PNG)
+![Login](LoginPage.PNG)
 # Main Menu Page
-    ![Menu](MainMenu.PNG)
+![Menu](MainMenu.PNG)
 # Unfollow Page
-    ![Unfollow](Unfollow.PNG)
+![Unfollow](Unfollow.PNG)
 # Auto-like Page
-    ![Auto-Like](AutoLike.PNG)
+![Auto-Like](AutoLike.PNG)
     
 # Example of action handling using intent
     fun next(view: View){
