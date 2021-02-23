@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.TextView
 import android.widget.Toast
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.activity_auto_like.*
 //import kotlinx.android.synthetic.main.activity_main.*
@@ -20,7 +21,8 @@ class Activity3 : AppCompatActivity() {
 //        showInput()
         val exampleList = generateDummyList(30)
         recycler_view_toLike.adapter = ExampleAdapter(exampleList)
-        recycler_view_toLike.layoutManager = LinearLayoutManager(this)
+//        recycler_view_toLike.layoutManager = LinearLayoutManager(this)
+        recycler_view_toLike.layoutManager = GridLayoutManager(this,2,GridLayoutManager.VERTICAL,false)
         recycler_view_toLike.setHasFixedSize(true)
     }
     private fun generateDummyList(size: Int): List<ExampleItem> {
@@ -32,7 +34,7 @@ class Activity3 : AppCompatActivity() {
 //                else -> R.drawable.ic_sun
 //            }
             val drawable = R.drawable.ic_user
-            val item = ExampleItem(drawable, "User $i to like", "Name_Surname")
+            val item = ExampleItem(drawable, "User $i", "Surname")
             list += item
         }
         return list
