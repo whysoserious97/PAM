@@ -46,15 +46,19 @@ In laboratory work No.2 I have implemented basic layout and UI for my mobile app
  - Picked the theme for my app, and it is Instagram Helper Utility.
  - Added 4 functional screens: sign in page, main menu, unfollow page and auto-like page
 
-In unfollow and auto-like page I am using RecyclerView to display a list of person of each one
+In "unfollow" and auto-like page I am using RecyclerView to display a list of people
+In "auto-like" I have used GridLayoutManager to make it with 2 columns
 
 
 
-# Example of behaviour handling
-    override fun onDestroy() {
-        super.onDestroy()
-        Toast.makeText(getApplicationContext(),"Come back later", Toast.LENGTH_SHORT).show();
-    }
+# Login Page
+    ![Login](LoginPage.PNG)
+# Main Menu Page
+    ![Menu](MainMenu.PNG)
+# Unfollow Page
+    ![Unfollow](Unfollow.PNG)
+# Auto-like Page
+    ![Auto-Like](AutoLike.PNG)
     
 # Example of action handling using intent
     fun next(view: View){
