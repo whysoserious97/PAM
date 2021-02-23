@@ -59,11 +59,3 @@ In "auto-like" I have used GridLayoutManager to make it with 2 columns
 ![Unfollow](Unfollow.PNG)
 # Auto-like Page
 ![Auto-Like](AutoLike.PNG)
-    
-# Example of action handling using intent
-    fun next(view: View){
-        val input = inputText.text.toString()
-        val intent = Intent(this,Activity2::class.java)
-        intent.putExtra("input",input)
-        startActivity(intent)
-    }
