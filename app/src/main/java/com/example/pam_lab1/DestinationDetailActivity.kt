@@ -5,7 +5,9 @@ import android.app.DatePickerDialog
 import android.app.DatePickerDialog.OnDateSetListener
 import android.content.Intent
 import android.os.Bundle
+import android.view.GestureDetector
 import android.view.MenuItem
+import android.view.MotionEvent
 import android.view.View
 import android.widget.Button
 import android.widget.Toast
@@ -16,9 +18,17 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import java.util.*
+import kotlin.math.abs
 
 
-class DestinationDetailActivity : AppCompatActivity() {
+class DestinationDetailActivity : AppCompatActivity(), GestureDetector.OnGestureListener {
+
+    lateinit var gestureDetector: GestureDetector
+    var x1:Float = 0.0f
+    var x2:Float = 0.0f
+    var y1:Float = 0.0f
+    var y2:Float = 0.0f
+
 
     private var datePickerDialog: DatePickerDialog? = null
    // private var dateButton: Button? = null
@@ -45,6 +55,7 @@ class DestinationDetailActivity : AppCompatActivity() {
 
             initDeleteButton(id)
         }
+        gestureDetector = GestureDetector(this,this)
     }
 
     private fun getTodaysDate(): String? {
@@ -160,28 +171,32 @@ class DestinationDetailActivity : AppCompatActivity() {
         }
     }
 
+    fun delete(id: Int){
+        val destinationService = ServiceBuilder.buildService(DestinationService::class.java)
+        val requestCall = destinationService.deleteDestination(id)
+
+        requestCall.enqueue(object : Callback<Unit> {
+
+            override fun onResponse(call: Call<Unit>, response: Response<Unit>) {
+                if (response.isSuccessful) {
+                    finish() // Move back to DestinationListActivity
+                    Toast.makeText(this@DestinationDetailActivity, "Successfully Deleted", Toast.LENGTH_SHORT).show()
+                } else {
+                    Toast.makeText(this@DestinationDetailActivity, "Failed to Delete", Toast.LENGTH_SHORT).show()
+                }
+            }
+
+            override fun onFailure(call: Call<Unit>, t: Throwable) {
+                Toast.makeText(this@DestinationDetailActivity, "Failed to Delete", Toast.LENGTH_SHORT).show()
+            }
+        })
+    }
+
     private fun initDeleteButton(id: Int) {
 
         btn_delete.setOnClickListener {
 
-            val destinationService = ServiceBuilder.buildService(DestinationService::class.java)
-            val requestCall = destinationService.deleteDestination(id)
-
-            requestCall.enqueue(object : Callback<Unit> {
-
-                override fun onResponse(call: Call<Unit>, response: Response<Unit>) {
-                    if (response.isSuccessful) {
-                        finish() // Move back to DestinationListActivity
-                        Toast.makeText(this@DestinationDetailActivity, "Successfully Deleted", Toast.LENGTH_SHORT).show()
-                    } else {
-                        Toast.makeText(this@DestinationDetailActivity, "Failed to Delete", Toast.LENGTH_SHORT).show()
-                    }
-                }
-
-                override fun onFailure(call: Call<Unit>, t: Throwable) {
-                    Toast.makeText(this@DestinationDetailActivity, "Failed to Delete", Toast.LENGTH_SHORT).show()
-                }
-            })
+            delete(id)
         }
     }
 
@@ -196,7 +211,82 @@ class DestinationDetailActivity : AppCompatActivity() {
 
 
     companion object {
-
+        const val MIN_DISTANCE = 150
         const val ARG_ITEM_ID = "item_id"
+    }
+
+    override fun onTouchEvent(event: MotionEvent?): Boolean {
+
+        gestureDetector.onTouchEvent(event)
+        when (event?.action){
+
+            0->{
+                x1 = event.x
+                y1 = event.y
+            }
+            1->{
+                x2 = event.x
+                y2 = event.y
+
+                val valueX:Float = x2 - x1
+                val valueY:Float= y2 - y1
+
+                if(abs(valueX) > MainActivity.MIN_DISTANCE){
+                    if(x2>x1){
+                        this.finish()
+                        // Toast.makeText(this,"Right Swipe",Toast.LENGTH_SHORT).show()
+                    }
+                    else{
+
+                        //Toast.makeText(this,"Left Swipe",Toast.LENGTH_SHORT).show()
+                    }
+                }
+                else if(abs(valueY) > MainActivity.MIN_DISTANCE){
+                    if(y2>y1){
+                        Toast.makeText(this,"Bottom Swipe",Toast.LENGTH_SHORT).show()
+                    }
+                    else{
+                        Toast.makeText(this,"Top Swipe",Toast.LENGTH_SHORT).show()
+                    }
+                }
+            }
+
+        }
+
+
+
+
+
+        return super.onTouchEvent(event)
+    }
+
+
+
+
+    override fun onDown(e: MotionEvent?): Boolean {
+
+        return false
+    }
+
+    override fun onShowPress(e: MotionEvent?) {
+
+        //return false
+    }
+
+    override fun onSingleTapUp(e: MotionEvent?): Boolean {
+        return false
+    }
+
+    override fun onScroll(e1: MotionEvent?, e2: MotionEvent?, distanceX: Float, distanceY: Float): Boolean {
+
+        return false
+    }
+
+    override fun onLongPress(e: MotionEvent?) {
+
+    }
+
+    override fun onFling(e1: MotionEvent?, e2: MotionEvent?, velocityX: Float, velocityY: Float): Boolean {
+        return false
     }
 }

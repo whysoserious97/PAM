@@ -7,8 +7,11 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.pam_lab1.R
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
-class DestinationAdapter(private val destinationList: List<Destination>) : RecyclerView.Adapter<DestinationAdapter.ViewHolder>() {
+class DestinationAdapter(var destinationList: MutableList<Destination>) : RecyclerView.Adapter<DestinationAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
 
@@ -34,6 +37,31 @@ class DestinationAdapter(private val destinationList: List<Destination>) : Recyc
 
     override fun getItemCount(): Int {
         return destinationList.size
+    }
+    fun deleteItem(pos:Int){
+        delete(destinationList[pos].id)
+        destinationList.removeAt(pos)
+        notifyItemRemoved(pos)
+    }
+    fun delete(id:Int){
+        val destinationService = ServiceBuilder.buildService(DestinationService::class.java)
+        val requestCall = destinationService.deleteDestination(id)
+
+        requestCall.enqueue(object : Callback<Unit> {
+
+            override fun onResponse(call: Call<Unit>, response: Response<Unit>) {
+                if (response.isSuccessful) {
+                    // finish() // Move back to DestinationListActivity
+                    // Toast.makeText(this@, "Successfully Deleted", Toast.LENGTH_SHORT).show()
+                } else {
+                    //  Toast.makeText(this@DestinationDetailActivity, "Failed to Delete", Toast.LENGTH_SHORT).show()
+                }
+            }
+
+            override fun onFailure(call: Call<Unit>, t: Throwable) {
+                //  Toast.makeText(this@DestinationDetailActivity, "Failed to Delete", Toast.LENGTH_SHORT).show()
+            }
+        })
     }
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
