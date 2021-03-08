@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="#bec6dd"
     android:layout_margin="10dp"
+    android:background="#bec6dd"
     android:padding="16dp">
 
         <!--        <LinearLayout-->
@@ -18,41 +18,45 @@
             android:id="@+id/tvx_course"
             android:layout_width="161dp"
             android:layout_height="50dp"
-                android:gravity="center"
             android:background="@drawable/course_box"
+            android:gravity="center"
             android:text="Course"
             android:textColor="#303030"
             android:textSize="40sp"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/tvx_subject"
-            android:layout_width="180dp"
-            android:layout_height="50dp"
-            android:gravity="center"
+            android:layout_width="168dp"
+            android:layout_height="49dp"
+            android:layout_marginTop="16dp"
             android:background="@drawable/subject_box"
+            android:gravity="center"
             android:text="@string/subject"
             android:textColor="#303030"
             android:textSize="40sp"
             android:translationX="20dp"
-            app:layout_constraintStart_toEndOf="@+id/tvx_course"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.392"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvx_course" />
 
         <TextView
             android:id="@+id/tvx_due"
-            android:layout_width="194dp"
-            android:layout_height="47dp"
-            android:layout_marginTop="8dp"
+            android:layout_width="164dp"
+            android:layout_height="54dp"
+            android:layout_marginTop="16dp"
             android:background="@drawable/due_box"
+            android:gravity="center"
             android:text="@string/due"
             android:textColor="#303030"
-            android:gravity="center"
             android:textSize="40sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.456"
+            app:layout_constraintHorizontal_bias="0.491"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvx_course" />
+            app:layout_constraintTop_toBottomOf="@+id/tvx_subject" />
 
         <!--        </LinearLayout>-->
 </androidx.constraintlayout.widget.ConstraintLayout>

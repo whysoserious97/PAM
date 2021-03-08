@@ -5,6 +5,7 @@ import android.os.Bundle
 
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.pam_lab1.R
 import kotlinx.android.synthetic.main.activity_destiny_list.*
@@ -18,7 +19,7 @@ class DestinationListActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_destiny_list) //activity_destiny_list
-        destiny_recycler_view.layoutManager = LinearLayoutManager(this)
+        destiny_recycler_view.layoutManager = GridLayoutManager(this,2,GridLayoutManager.VERTICAL,false)
        // setSupportActionBar(toolbar)
        // toolbar.title = title
 
