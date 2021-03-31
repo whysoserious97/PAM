@@ -7,6 +7,11 @@ import android.view.MotionEvent
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.navigation.findNavController
+import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.setupActionBarWithNavController
+import androidx.navigation.ui.setupWithNavController
+import kotlinx.android.synthetic.main.activity_main.*
 
 import kotlin.math.abs
 
@@ -26,6 +31,15 @@ class MainActivity : AppCompatActivity() ,GestureDetector.OnGestureListener{
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        //bottomNavigationView
+        val navController = findNavController(R.id.fragment)
+
+        val appBarConfiguration = AppBarConfiguration(setOf(R.id.firstFragment,R.id.second_Fragment))
+        setupActionBarWithNavController(navController,appBarConfiguration)
+
+        bottomNavigationView.setupWithNavController(navController)
+
 
         gestureDetector = GestureDetector(this,this)
     }
