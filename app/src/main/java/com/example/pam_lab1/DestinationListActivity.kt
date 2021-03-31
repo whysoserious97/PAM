@@ -12,6 +12,9 @@ import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.pam_lab1.R
 import kotlinx.android.synthetic.main.activity_destiny_list.*
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers.IO
+import kotlinx.coroutines.launch
 
 import retrofit2.Call
 import retrofit2.Callback
@@ -46,11 +49,13 @@ class DestinationListActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
+        CoroutineScope(IO).launch {
+            loadDestinations()
+        }
 
-        loadDestinations()
     }
 
-    private fun loadDestinations() {
+    private suspend fun loadDestinations() {
 
         val destinationService = ServiceBuilder.buildService(DestinationService::class.java)
 
