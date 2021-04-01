@@ -119,9 +119,11 @@ Lab 3: Implementing API layer
      }
  
  - Added required screens in order to complete the app logic
+ - 
   ![Tasks](Tasks.PNG)
   ![Task_Detail](TaskDetail.PNG)
  - Added tab bar navigation
+ - 
   ![Home](Home.PNG)
   ![About](About.PNG)
  
