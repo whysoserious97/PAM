@@ -1,5 +1,7 @@
 package com.example.pam_lab1
 
+import com.example.pam_lab1.model.Destination
+
 object SampleData {
 
     val DESTINATIONS = ArrayList<Destination>()

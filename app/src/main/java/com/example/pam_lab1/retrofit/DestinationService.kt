@@ -1,8 +1,8 @@
-package com.example.pam_lab1
+package com.example.pam_lab1.retrofit
 
+import com.example.pam_lab1.model.Destination
 import retrofit2.Call
 import retrofit2.http.*
-import javax.security.auth.Subject
 
 interface DestinationService {
 

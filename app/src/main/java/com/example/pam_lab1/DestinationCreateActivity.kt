@@ -1,23 +1,20 @@
 package com.example.pam_lab1
 
 import android.os.Bundle
-import android.view.GestureDetector
-import android.view.MotionEvent
 
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.example.pam_lab1.R
+import com.example.pam_lab1.model.Destination
+import com.example.pam_lab1.retrofit.DestinationService
 import kotlinx.android.synthetic.main.activity_destiny_create.*
 import kotlinx.android.synthetic.main.activity_destiny_create.et_course
 import kotlinx.android.synthetic.main.activity_destiny_create.et_description
 import kotlinx.android.synthetic.main.activity_destiny_create.et_subject
 import kotlinx.android.synthetic.main.activity_destiny_detail.*
-import kotlinx.android.synthetic.main.list_item.*
 
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import kotlin.math.abs
 
 class DestinationCreateActivity : AppCompatActivity() {
 

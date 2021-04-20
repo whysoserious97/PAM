@@ -6,7 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.pam_lab1.R
+import com.example.pam_lab1.model.Destination
+import com.example.pam_lab1.retrofit.DestinationService
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
