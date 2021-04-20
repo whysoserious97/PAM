@@ -30,7 +30,7 @@ object DestinationRepository {
             ) {
                 Log.v("DEBUG : ", response.body().toString())
 
-                val destinationList = response.body()!!
+                destinationList.value = response.body()!!
                 //return destinationList
                // val msg = data!!.message
 
