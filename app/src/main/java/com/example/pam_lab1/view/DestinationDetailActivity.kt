@@ -5,20 +5,17 @@ import android.app.DatePickerDialog
 import android.app.DatePickerDialog.OnDateSetListener
 import android.content.Intent
 import android.os.Bundle
-import android.view.GestureDetector
 import android.view.MenuItem
-import android.view.MotionEvent
 import android.view.View
-import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.example.pam_lab1.R
+import com.example.pam_lab1.model.Destination
+import com.example.pam_lab1.retrofit.DestinationService
 import kotlinx.android.synthetic.main.activity_destiny_detail.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import java.util.*
-import kotlin.math.abs
 
 
 class DestinationDetailActivity : AppCompatActivity() {

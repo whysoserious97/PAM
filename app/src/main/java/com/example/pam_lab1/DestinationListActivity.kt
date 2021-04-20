@@ -2,15 +2,13 @@ package com.example.pam_lab1
 
 import android.content.Intent
 import android.os.Bundle
-import android.view.GestureDetector
-import android.view.MotionEvent
 
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.ItemTouchHelper
-import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.pam_lab1.R
+import com.example.pam_lab1.model.Destination
+import com.example.pam_lab1.retrofit.DestinationService
 import kotlinx.android.synthetic.main.activity_destiny_list.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers.IO
@@ -19,7 +17,6 @@ import kotlinx.coroutines.launch
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import kotlin.math.abs
 
 class DestinationListActivity : AppCompatActivity() {
 
