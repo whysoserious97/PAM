@@ -1,4 +1,4 @@
-package com.example.pam_lab1
+package com.example.pam_lab1.utils
 
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView

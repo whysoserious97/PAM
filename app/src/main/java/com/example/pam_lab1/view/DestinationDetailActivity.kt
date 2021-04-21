@@ -1,4 +1,4 @@
-package com.example.pam_lab1
+package com.example.pam_lab1.view
 
 import android.app.AlertDialog
 import android.app.DatePickerDialog
@@ -9,13 +9,19 @@ import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModelProvider
 import com.example.pam_lab1.model.Destination
 import com.example.pam_lab1.retrofit.DestinationService
+import com.example.pam_lab1.viewmodel.DestinationListViewModel
 import kotlinx.android.synthetic.main.activity_destiny_detail.*
+import kotlinx.android.synthetic.main.activity_destiny_list.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import java.util.*
+import androidx.lifecycle.Observer
+import com.example.pam_lab1.R
+import com.example.pam_lab1.retrofit.ServiceBuilder
 
 
 class DestinationDetailActivity : AppCompatActivity() {
@@ -23,6 +29,7 @@ class DestinationDetailActivity : AppCompatActivity() {
 
 
     private var datePickerDialog: DatePickerDialog? = null
+    lateinit var destinationViewModel: DestinationListViewModel
    // private var dateButton: Button? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -41,7 +48,15 @@ class DestinationDetailActivity : AppCompatActivity() {
 
             val id = intent.getIntExtra(ARG_ITEM_ID, 0)
 
-            loadDetails(id)
+            destinationViewModel = ViewModelProvider(this).get(DestinationListViewModel::class.java)
+            destinationViewModel.getDestination(id)!!.observe(this, Observer { destination ->
+
+                et_course.setText(destination.course)
+                et_description.setText(destination.description)
+                et_subject.setText(destination.subject)
+                et_due.setText(destination.due)
+
+            })
 
             initUpdateButton(id)
 

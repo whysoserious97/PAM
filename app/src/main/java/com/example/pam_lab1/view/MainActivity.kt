@@ -1,19 +1,16 @@
-package com.example.pam_lab1
+package com.example.pam_lab1.view
 
 import android.content.Intent
 import android.os.Bundle
-import android.view.GestureDetector
-import android.view.MotionEvent
 import android.view.View
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import com.example.pam_lab1.R
+import com.example.pam_lab1.view.DestinationListActivity
 import kotlinx.android.synthetic.main.activity_main.*
-
-import kotlin.math.abs
 
 
 class MainActivity : AppCompatActivity() {
@@ -24,7 +21,7 @@ class MainActivity : AppCompatActivity() {
 
         val navController = findNavController(R.id.fragment)
 
-        val appBarConfiguration = AppBarConfiguration(setOf(R.id.firstFragment,R.id.second_Fragment))
+        val appBarConfiguration = AppBarConfiguration(setOf(R.id.firstFragment, R.id.second_Fragment))
         setupActionBarWithNavController(navController,appBarConfiguration)
 
         bottomNavigationView.setupWithNavController(navController)

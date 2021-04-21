@@ -1,4 +1,4 @@
-package com.example.pam_lab1
+package com.example.pam_lab1.view
 
 import android.content.Intent
 import android.os.Bundle
@@ -7,13 +7,12 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.ItemTouchHelper
+import com.example.pam_lab1.R
 import com.example.pam_lab1.adapter.DestinationAdapter
-import com.example.pam_lab1.retrofit.DestinationService
+import com.example.pam_lab1.utils.SwipeToDelete
 import com.example.pam_lab1.viewmodel.DestinationListViewModel
 import kotlinx.android.synthetic.main.activity_destiny_list.*
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers.IO
-import kotlinx.coroutines.launch
 
 class DestinationListActivity : AppCompatActivity() {
 
@@ -38,15 +37,15 @@ class DestinationListActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
-        CoroutineScope(IO).launch {
+//        CoroutineScope(IO).launch {
             loadDestinations()
-        }
+//        }
 
     }
 
-    private suspend fun loadDestinations() {
+    private fun loadDestinations() { //suspend
 
-        val destinationService = ServiceBuilder.buildService(DestinationService::class.java)
+        //val destinationService = ServiceBuilder.buildService(DestinationService::class.java)
 
         val filter = HashMap<String, String>()
 //        filter["country"] = "India"
@@ -62,6 +61,9 @@ class DestinationListActivity : AppCompatActivity() {
 
                     val adapter = DestinationAdapter(destinationList.toMutableList())
                     destiny_recycler_view.adapter = adapter
+
+                    var itemTouchHelper = ItemTouchHelper(SwipeToDelete(adapter))
+                    itemTouchHelper.attachToRecyclerView(destiny_recycler_view)
 
 //            wp7progressBar.hideProgressBar()
 //

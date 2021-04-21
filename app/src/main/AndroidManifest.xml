@@ -12,12 +12,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.PAM_LAB1">
-        <activity android:name=".DestinationListActivity"/>
-        <activity android:name=".DestinationDetailActivity"/>
-        <activity android:name=".DestinationCreateActivity"/>
+        <activity android:name=".view.DestinationListActivity"/>
+        <activity android:name=".view.DestinationDetailActivity"/>
+        <activity android:name=".view.DestinationCreateActivity"/>
 
 
-        <activity android:name=".MainActivity">
+        <activity android:name=".view.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

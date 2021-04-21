@@ -1,4 +1,4 @@
-package com.example.pam_lab1
+package com.example.pam_lab1.retrofit
 
 import okhttp3.logging.HttpLoggingInterceptor
 import okhttp3.OkHttpClient
