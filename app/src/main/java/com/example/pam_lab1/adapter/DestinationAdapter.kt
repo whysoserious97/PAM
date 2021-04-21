@@ -1,4 +1,4 @@
-package com.example.pam_lab1
+package com.example.pam_lab1.adapter
 
 import android.content.Intent
 import android.view.LayoutInflater
@@ -6,6 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.pam_lab1.DestinationDetailActivity
+import com.example.pam_lab1.R
+import com.example.pam_lab1.ServiceBuilder
 import com.example.pam_lab1.model.Destination
 import com.example.pam_lab1.retrofit.DestinationService
 import retrofit2.Call
