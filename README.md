@@ -30,3 +30,32 @@ In laboratory work No.1 I was performing basic setup of mobile application on An
         startActivity(intent)
     }
 
+LAB 2 : Instagram Utility
+App functions to implement in furthure labs:
+1) Show the persons who do not follow you, but you follow them
+2) Auto-Like photos of the persons in the list
+3) For influencers to like all photoes of a random person from the persons who follows him (as an award for winning in a contest)
+4) I am thinking to implement the functionality of sending messages broadcast to groups of people,but not being part of a group. Like sending general holiday congratulations like "Happy New Year", or inviting people to a party without reavealing who didn't accepted 
+
+In laboratory work No.2 I have implemented basic layout and UI for my mobile application.
+
+
+
+# Laboratory work task performed:
+
+ - Picked the theme for my app, and it is Instagram Helper Utility.
+ - Added 4 functional screens: sign in page, main menu, unfollow page and auto-like page
+
+In "unfollow" and auto-like page I am using RecyclerView to display a list of people
+In "auto-like" I have used GridLayoutManager to make it with 2 columns
+
+
+
+# Login Page
+![Login](LoginPage.PNG)
+# Main Menu Page
+![Menu](MainMenu.PNG)
+# Unfollow Page
+![Unfollow](Unfollow.PNG)
+# Auto-like Page
+![Auto-Like](AutoLike.PNG)
