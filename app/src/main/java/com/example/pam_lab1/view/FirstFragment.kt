@@ -7,8 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.example.pam_lab1.R
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
+
 
 
 class FirstFragment : Fragment() {

@@ -55,15 +55,14 @@ class DestinationAdapter(var destinationList: MutableList<Destination>) : Recycl
 
             override fun onResponse(call: Call<Unit>, response: Response<Unit>) {
                 if (response.isSuccessful) {
-                    // finish() // Move back to DestinationListActivity
-                    // Toast.makeText(this@, "Successfully Deleted", Toast.LENGTH_SHORT).show()
+
                 } else {
-                    //  Toast.makeText(this@DestinationDetailActivity, "Failed to Delete", Toast.LENGTH_SHORT).show()
+
                 }
             }
 
             override fun onFailure(call: Call<Unit>, t: Throwable) {
-                //  Toast.makeText(this@DestinationDetailActivity, "Failed to Delete", Toast.LENGTH_SHORT).show()
+
             }
         })
     }
