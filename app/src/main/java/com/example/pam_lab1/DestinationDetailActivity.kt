@@ -21,26 +21,18 @@ import java.util.*
 import kotlin.math.abs
 
 
-class DestinationDetailActivity : AppCompatActivity(), GestureDetector.OnGestureListener {
+class DestinationDetailActivity : AppCompatActivity() {
 
-    lateinit var gestureDetector: GestureDetector
-    var x1:Float = 0.0f
-    var x2:Float = 0.0f
-    var y1:Float = 0.0f
-    var y2:Float = 0.0f
 
 
     private var datePickerDialog: DatePickerDialog? = null
-   // private var dateButton: Button? = null
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_destiny_detail)
         initDatePicker();
-       // var dateButton = findViewById(R.id.et_due);
-       // et_due.setText(getTodaysDate());
-        //setSupportActionBar(detail_toolbar)
-        // Show the Up button in the action bar.
+
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         val bundle: Bundle? = intent.extras
@@ -55,7 +47,6 @@ class DestinationDetailActivity : AppCompatActivity(), GestureDetector.OnGesture
 
             initDeleteButton(id)
         }
-        gestureDetector = GestureDetector(this,this)
     }
 
     private fun getTodaysDate(): String? {
@@ -79,7 +70,7 @@ class DestinationDetailActivity : AppCompatActivity(), GestureDetector.OnGesture
         val day: Int = cal.get(Calendar.DAY_OF_MONTH)
         val style: Int = AlertDialog.THEME_HOLO_LIGHT
         datePickerDialog = DatePickerDialog(this, style, dateSetListener, year, month, day)
-        //datePickerDialog.getDatePicker().setMaxDate(System.currentTimeMillis());
+
     }
     private fun makeDateString(day: Int, month: Int, year: Int): String {
         return getMonthFormat(month) + " " + day + " " + year
@@ -99,7 +90,6 @@ class DestinationDetailActivity : AppCompatActivity(), GestureDetector.OnGesture
         if (month == 11) return "NOV"
         return if (month == 12) "DEC" else "JAN"
 
-        //default should never happen
     }
 
     fun openDatePicker(view: View?) {
@@ -211,82 +201,8 @@ class DestinationDetailActivity : AppCompatActivity(), GestureDetector.OnGesture
 
 
     companion object {
-        const val MIN_DISTANCE = 150
         const val ARG_ITEM_ID = "item_id"
     }
 
-    override fun onTouchEvent(event: MotionEvent?): Boolean {
 
-        gestureDetector.onTouchEvent(event)
-        when (event?.action){
-
-            0->{
-                x1 = event.x
-                y1 = event.y
-            }
-            1->{
-                x2 = event.x
-                y2 = event.y
-
-                val valueX:Float = x2 - x1
-                val valueY:Float= y2 - y1
-
-                if(abs(valueX) > MainActivity.MIN_DISTANCE){
-                    if(x2>x1){
-                        this.finish()
-                        // Toast.makeText(this,"Right Swipe",Toast.LENGTH_SHORT).show()
-                    }
-                    else{
-
-                        //Toast.makeText(this,"Left Swipe",Toast.LENGTH_SHORT).show()
-                    }
-                }
-                else if(abs(valueY) > MainActivity.MIN_DISTANCE){
-                    if(y2>y1){
-                        Toast.makeText(this,"Bottom Swipe",Toast.LENGTH_SHORT).show()
-                    }
-                    else{
-                        Toast.makeText(this,"Top Swipe",Toast.LENGTH_SHORT).show()
-                    }
-                }
-            }
-
-        }
-
-
-
-
-
-        return super.onTouchEvent(event)
-    }
-
-
-
-
-    override fun onDown(e: MotionEvent?): Boolean {
-
-        return false
-    }
-
-    override fun onShowPress(e: MotionEvent?) {
-
-        //return false
-    }
-
-    override fun onSingleTapUp(e: MotionEvent?): Boolean {
-        return false
-    }
-
-    override fun onScroll(e1: MotionEvent?, e2: MotionEvent?, distanceX: Float, distanceY: Float): Boolean {
-
-        return false
-    }
-
-    override fun onLongPress(e: MotionEvent?) {
-
-    }
-
-    override fun onFling(e1: MotionEvent?, e2: MotionEvent?, velocityX: Float, velocityY: Float): Boolean {
-        return false
-    }
 }

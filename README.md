@@ -59,3 +59,71 @@ In "auto-like" I have used GridLayoutManager to make it with 2 columns
 ![Unfollow](Unfollow.PNG)
 # Auto-like Page
 ![Auto-Like](AutoLike.PNG)
+
+Lab 3: Implementing API layer
+
+# Laboratory work task performed:
+ - I have created a server on localhost in order to recieve the API.
+ # API
+ ![API](api.png)
+ - Implemented 2 POST (gets all tasks, gets a specific task by id), 1 PUT(updates a task) 1 DELETE(deletes the task) requests in this lab.
+# API examples 
+     interface DestinationService {
+     
+         @GET("task")
+         fun getDestinationList(@QueryMap filter: HashMap<String, String>): Call<List<Destination>>
+     
+         @GET("task/{id}")
+         fun getDestination(@Path("id") id: Int): Call<Destination>
+     
+         @POST("task")
+         fun addDestination(@Body newDestination: Destination): Call<Destination>
+     
+         @FormUrlEncoded
+         @PUT("task/{id}")
+         fun updateDestination(
+                 @Path("id") id: Int,
+                 @Field("course") course: String,
+                 @Field("description") desc: String,
+                 @Field("subject") subject: String,
+                 @Field("due") due: String
+         ): Call<Destination>
+     
+         @DELETE("task/{id}")
+         fun deleteDestination(@Path("id") id: Int): Call<Unit>
+     }
+ - The api requests are implemented using Retrofit and kotlin coroutines
+ #Coroutine call
+         CoroutineScope(IO).launch {
+             loadDestinations()
+         }
+ #Retrofit
+     private const val URL = "http://10.0.2.2:9000/"
+ 
+     // Create Logger
+     private val logger = HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
+ 
+     // Create OkHttp Client
+     private val okHttp = OkHttpClient.Builder().addInterceptor(logger)
+ 
+     // Create Retrofit Builder
+     private val builder = Retrofit.Builder().baseUrl(URL)
+         .addConverterFactory(GsonConverterFactory.create())
+         .client(okHttp.build())
+ 
+     // Create Retrofit Instance
+     private val retrofit = builder.build()
+ 
+     fun <T> buildService(serviceType: Class<T>): T {
+         return retrofit.create(serviceType)
+     }
+ 
+ - Added required screens in order to complete the app logic
+ - 
+  ![Tasks](Tasks.PNG)
+  ![Task_Detail](TaskDetail.PNG)
+ - Added tab bar navigation
+ - 
+  ![Home](Home.PNG)
+  ![About](About.PNG)
+ 
