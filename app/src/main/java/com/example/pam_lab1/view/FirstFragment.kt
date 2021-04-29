@@ -9,7 +9,6 @@ import com.example.pam_lab1.R
 
 
 
-
 class FirstFragment : Fragment() {
 
     override fun onCreateView(
