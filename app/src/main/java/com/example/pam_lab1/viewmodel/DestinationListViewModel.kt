@@ -13,7 +13,6 @@ class DestinationListViewModel : ViewModel() {
     var addDestination : MutableLiveData<Destination>? = null
 
     fun getDestinations(filter: HashMap<String,String>) : LiveData<List<Destination>>? {
-        //val filter = HashMap<String, String>()
         servicesLiveData = DestinationRepository.getServicesApiCall(filter)
         return servicesLiveData
     }

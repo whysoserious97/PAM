@@ -32,15 +32,12 @@ object DestinationRepository {
             ) {
                 Log.v("DEBUG : ", response.body().toString())
 
-                val destinationList = response.body()!!
-                //return destinationList
-               // val msg = data!!.message
+                destinationList.value = response.body()!!
 
-               // serviceSetterGetter.value = ServicesSetterGetter(msg)
             }
         })
         return destinationList
-       // return serviceSetterGetter
+
     }
     /////////////////////////////////////////////
     fun loadDetails(id: Int): MutableLiveData<Destination> {

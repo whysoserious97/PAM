@@ -16,7 +16,7 @@ import kotlinx.android.synthetic.main.activity_destiny_create.et_subject
 import kotlinx.android.synthetic.main.activity_destiny_create.et_due
 import kotlinx.android.synthetic.main.activity_destiny_create.view.*
 
-//import kotlinx.android.synthetic.main.activity_destiny_detail.*
+
 
 class DestinationCreateActivity : AppCompatActivity() {
 
@@ -26,10 +26,6 @@ class DestinationCreateActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_destiny_create)
 
-//        setSupportActionBar(toolbar)
-      //  val context = this
-
-//        et_due.setText("JAN 01 2020")
 
         // Show the Up button in the action bar.
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
@@ -37,7 +33,6 @@ class DestinationCreateActivity : AppCompatActivity() {
         destinationViewModel = ViewModelProvider(this).get(DestinationListViewModel::class.java)
 
         btn_add.setOnClickListener {
-           // et_due.text = "1 Jan"
             val newDestination = Destination()
             newDestination.course = et_course.text.toString()
             newDestination.description = et_description.text.toString()

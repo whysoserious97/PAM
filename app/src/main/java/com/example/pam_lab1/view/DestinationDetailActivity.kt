@@ -30,15 +30,11 @@ class DestinationDetailActivity : AppCompatActivity() {
 
     private var datePickerDialog: DatePickerDialog? = null
     lateinit var destinationViewModel: DestinationListViewModel
-   // private var dateButton: Button? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_destiny_detail)
         initDatePicker();
-       // var dateButton = findViewById(R.id.et_due);
-       // et_due.setText(getTodaysDate());
-        //setSupportActionBar(detail_toolbar)
         // Show the Up button in the action bar.
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
@@ -63,15 +59,6 @@ class DestinationDetailActivity : AppCompatActivity() {
             initDeleteButton(id)
         }
     }
-
-    private fun getTodaysDate(): String? {
-        val cal: Calendar = Calendar.getInstance()
-        val year: Int = cal.get(Calendar.YEAR)
-        var month: Int = cal.get(Calendar.MONTH)
-        month = month + 1
-        val day: Int = cal.get(Calendar.DAY_OF_MONTH)
-        return makeDateString(day, month, year)
-    }
     private fun initDatePicker() {
         val dateSetListener = OnDateSetListener { datePicker, year, month, day ->
             var month = month
@@ -85,7 +72,6 @@ class DestinationDetailActivity : AppCompatActivity() {
         val day: Int = cal.get(Calendar.DAY_OF_MONTH)
         val style: Int = AlertDialog.THEME_HOLO_LIGHT
         datePickerDialog = DatePickerDialog(this, style, dateSetListener, year, month, day)
-        //datePickerDialog.getDatePicker().setMaxDate(System.currentTimeMillis());
     }
     private fun makeDateString(day: Int, month: Int, year: Int): String {
         return getMonthFormat(month) + " " + day + " " + year
@@ -104,43 +90,12 @@ class DestinationDetailActivity : AppCompatActivity() {
         if (month == 10) return "OCT"
         if (month == 11) return "NOV"
         return if (month == 12) "DEC" else "JAN"
-
-        //default should never happen
     }
 
     fun openDatePicker(view: View?) {
         datePickerDialog!!.show()
     }
 
-    private fun loadDetails(id: Int) {
-
-        val destinationService = ServiceBuilder.buildService(DestinationService::class.java)
-        val requestCall = destinationService.getDestination(id)
-
-        requestCall.enqueue(object : retrofit2.Callback<Destination> {
-
-            override fun onResponse(call: Call<Destination>, response: Response<Destination>) {
-
-                if (response.isSuccessful) {
-                    val destination = response.body()
-                    destination?.let {
-                        et_course.setText(destination.course)
-                        et_description.setText(destination.description)
-                        et_subject.setText(destination.subject)
-                        et_due.setText(destination.due)
-
-                        //collapsing_toolbar.title = destination.city
-                    }
-                } else {
-                    Toast.makeText(this@DestinationDetailActivity, "Failed to retrieve details", Toast.LENGTH_SHORT).show()
-                }
-            }
-
-            override fun onFailure(call: Call<Destination>, t: Throwable) {
-                Toast.makeText(this@DestinationDetailActivity, "Failed to retrieve details " + t.toString(), Toast.LENGTH_SHORT).show()
-            }
-        })
-    }
 
 
     private fun initUpdateButton(id: Int) {
@@ -160,7 +115,6 @@ class DestinationDetailActivity : AppCompatActivity() {
                 override fun onResponse(call: Call<Destination>, response: Response<Destination>) {
                     if (response.isSuccessful) {
                         finish() // Move back to DestinationListActivity
-                        var updatedDestination = response.body() // Use it or ignore It
                         Toast.makeText(this@DestinationDetailActivity,
                                 "Item Updated Successfully", Toast.LENGTH_SHORT).show()
                     } else {
