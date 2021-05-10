@@ -5,7 +5,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.DestinationListActivity">
+    tools:context=".view.DestinationListActivity"
+    android:id="@+id/Activity_List">
 
 
     <androidx.recyclerview.widget.RecyclerView
